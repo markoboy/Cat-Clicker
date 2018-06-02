@@ -1,0 +1,15 @@
+{
+  "name": "catclicker",
+  "version": "1.0.0",
+  "description": "It's an app that counts how many times you click on a cat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Athanasios Markou",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.24.4",
+    "gulp": "^3.9.1"
+  }
+}

@@ -1,0 +1,34 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+
+body {
+	text-align: center;
+	font: 18px Arial, sans-serif;
+	color: #333;
+}
+
+.clicks {
+	padding: 10px;
+}
+
+.counter {
+	color: #922;
+}
+
+.cats-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.cat-placeholder {
+	width: 33%;
+}
+
+.cat-img {
+	border: 1px solid black;
+	border-radius: 16px;
+	width: 65%;
+}

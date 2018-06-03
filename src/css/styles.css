@@ -10,25 +10,40 @@ body {
 	color: #333;
 }
 
-.clicks {
-	padding: 10px;
+/* Main container styles */
+.container {
+	height: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+	align-content: center;
+}
+
+/* Cat's area styles */
+.cats-area {
+	width: 70%;
+	align-self: center;
+	margin: 5px;
+}
+
+.cat-placeholder {
+	align-self: center;
+}
+
+/* Cat's container styles */
+.cats-container {
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+	align-content: center;
+}
+
+.cat-img {
+	width: 65%;
+	border: 1px solid black;
+	border-radius: 28px;
+	box-shadow: 3px 6px 10px 3px grey;
 }
 
 .counter {
 	color: #922;
-}
-
-.cats-container {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.cat-placeholder {
-	width: 33%;
-}
-
-.cat-img {
-	border: 1px solid black;
-	border-radius: 16px;
-	width: 65%;
 }

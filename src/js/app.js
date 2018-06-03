@@ -22,44 +22,96 @@ const catClicker = (function() {
 			name: 'Hello Kitty',
 			src: 'img/cat02.jpg',
 			counter: 0
+		},
+		{
+			name: 'Kitty Hello',
+			src: 'img/cat03.jpg',
+			counter: 0
+		},
+		{
+			name: 'Kitty Kitty',
+			src: 'img/cat04.jpg',
+			counter: 0
+		},
+		{
+			name: 'Pitty Kitty',
+			src: 'img/cat05.jpg',
+			counter: 0
 		}
 	];
 
 	/* Initialize all cats and place them in the cats-container */
 	function init() {
-		// Create the elements for the DOM
-		let catsContainer = document.querySelector('.cats-container'),
+		displayCat(0);
+		listCats();
+	}
+
+	/**
+	 * Create a displayCat function to display the selected cat
+	 * in the cats-area container.
+	 * @param {number} id - The cat's id to be displayed.
+	 */
+	function displayCat(id) {
+		// Create the variables for DOM elements.
+		let catsArea = document.querySelector('.cats-area'),
 			catPlaceholder,
 			catName,
 			catCounter,
 			catImg;
 
-		// Loop through the cats and place them in the DOM.
+		// Clear cats-area before displaying the cat.
+		catsArea.innerHTML = '';
+
+		// Create cat's placeholder elements.
+		catPlaceholder = document.createElement('div');
+		catPlaceholder.classList.add('cat-placeholder');
+
+		// Create cat's name and counter placeholder.
+		catName = document.createElement('p');
+		catName.innerHTML = allCats[id].name + ' ';
+		catCounter = document.createElement('span');
+		catCounter.classList.add('counter');
+		catCounter.id = id;
+		catCounter.innerHTML = allCats[id].counter;
+		// Create cat's images.
+		catImg = document.createElement('img');
+		catImg.classList.add('cat-img');
+		catImg.src = allCats[id].src;
+
+		// Append elements in the placeholder.
+		catName.appendChild(catCounter);
+		catPlaceholder.appendChild(catName);
+		catPlaceholder.appendChild(catImg);
+
+		// Append placeholder in the catsArea container.
+		catsArea.appendChild(catPlaceholder);
+	}
+
+	/**
+	 * Create a listCats function to list all cats
+	 * in order to select them.
+	 */
+	function listCats() {
+		// Create variables for the DOM content.
+		let catsContainer = document.querySelector('.cats-container'),
+			catLink;
+
+		// Loop through the allCats data to list the cats.
 		allCats.forEach(function(cat, ind) {
-			// Create cat's placeholder elements.
-			catPlaceholder = document.createElement('div');
-			catPlaceholder.classList.add('cat-placeholder');
+			// Create the cat's link.
+			catLink = document.createElement('a');
+			catLink.href = '#';
+			catLink.innerHTML = cat.name;
 
-			// Create cat's name and counter placeholder.
-			catName = document.createElement('p');
-			catName.innerHTML = cat.name + ' ';
-			catCounter = document.createElement('span');
-			catCounter.classList.add('counter');
-			catCounter.id = ind;
-			catCounter.innerHTML = cat.counter;
+			// Append the link to the container.
+			catsContainer.appendChild(catLink);
 
-			// Create cat's images.
-			catImg = document.createElement('img');
-			catImg.classList.add('cat-img');
-			catImg.src = cat.src;
-
-			// Append elements in the placeholder.
-			catName.appendChild(catCounter);
-			catPlaceholder.appendChild(catName);
-			catPlaceholder.appendChild(catImg);
-
-			// Append placeholder in the container.
-			catsContainer.appendChild(catPlaceholder);
+			// Add an event listener to change the displayed cat.
+			catLink.addEventListener('click', (function(id) {
+				return function() {
+					displayCat(id);
+				}
+			})(ind));
 		});
 	}
 
@@ -70,17 +122,6 @@ const catClicker = (function() {
 		// Increase cat's counter and display it.
 		allCats[id].counter++;
 		counter.innerHTML = allCats[id].counter;
-
-		// Create an all counter.
-		let allCounter = 0;
-
-		// Increase all Cats counter.
-		allCats.forEach(function(cat) {
-			allCounter += cat.counter;
-		});
-
-		// Display all counter.
-		document.querySelector('.clicks .counter').innerHTML = allCounter;
 	}
 
 	init();
@@ -89,6 +130,7 @@ const catClicker = (function() {
 	 * that trigers when the pointer clicks on an cat-img
 	 */
 	document.addEventListener('click', function(e) {
+		// If the cat's image is clicked.
 		if (e.target.className === 'cat-img') {
 			// Get cat's counter.
 			let counter = e.target.parentNode.firstElementChild.firstElementChild;

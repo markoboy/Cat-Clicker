@@ -38,7 +38,7 @@ const catClicker = (function() {
 		allCats.forEach(function(cat, ind) {
 			// Create cat's placeholder elements.
 			catPlaceholder = document.createElement('div');
-			catPlaceholder.classList.add('cat-placeholder')
+			catPlaceholder.classList.add('cat-placeholder');
 
 			// Create cat's name and counter placeholder.
 			catName = document.createElement('p');

@@ -1,0 +1,58 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+
+body {
+	text-align: center;
+	font: 18px Arial, sans-serif;
+	color: #333;
+}
+
+/* Main container styles */
+.container {
+	display: flex;
+	flex-wrap: nowrap;
+	align-content: center;
+	height: 100%;
+}
+
+/* Cats list styles */
+.cats-list {
+	list-style: none;
+	width: 25%;
+	align-self: center;
+}
+
+.cat-link {
+	box-sizing: border-box;
+	/*display: inline-block;*/
+	font-variant: small-caps;
+	padding: 2px 10px;
+	margin: 0 0 5px 0;
+	border: 1px solid black;
+	border-radius: 6px;
+}
+
+.cat-link a {
+	text-decoration: none;
+	color: #00F;
+}
+
+/* Cat's display area styles */
+.cat-display {
+	width: 75%;
+	align-self: center;
+}
+
+.cat-name .counter {
+	color: #f33;
+}
+
+.cat-img {
+	width: 60%;
+	border: 1px solid black;
+	border-radius: 12px;
+	box-shadow: 3px 5px 10px 3px grey;
+}

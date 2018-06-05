@@ -40,6 +40,11 @@ document.addEventListener('DOMContentLoaded', (function() {
 				name: 'Pitty Kitty',
 				src: 'img/cat05.jpg',
 				counter: 0
+			},
+			{
+				name: 'Buxesas',
+				src: 'img/cat06.jpg',
+				counter: 0
 			}
 		],
 	}

@@ -18,6 +18,24 @@
 			<h3 class="cat-name"></h3>
 			<img src="" alt="Cute kitty picture" class="cat-img">
 		</section>
+
+		<!-- An admin button to display a form -->
+		<button id="admin" class="admin">Admin</button>
+
+		<!-- A form to change cat's data -->
+		<form class="cat-form">
+			<label for="cat-form-name" class="cat-form-item">Name</label>
+			<input id="cat-form-name" type="text" placeholder="Cute kitty" required>
+
+			<label for="cat-form-src" class="cat-form-item">URL</label>
+			<input id="cat-form-src" type="text" placeholder="https://site.com/cat.jpg" required>
+
+			<label for="cat-form-counter" class="cat-form-item">Counter</label>
+			<input id="cat-form-counter" type="number" min="0" placeholder="0" required>
+			<br>
+			<a id="form-cancel" class="form-button" href="#">Cancel</a>
+			<input id="form-save" class="form-button" type="submit" value="Save">
+		</form>
 	</main>
 
 	<!-- Scripts -->

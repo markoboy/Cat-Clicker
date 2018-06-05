@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', (function() {
 			// Initialize the views.
 			catListView.init();
 			catView.init();
+			formView.init();
 		},
 
 		getCats: function() {
@@ -71,6 +72,12 @@ document.addEventListener('DOMContentLoaded', (function() {
 		increaseCounter: function() {
 			model.currentCat.counter++;
 			catView.render();
+		},
+
+		addCat: function(cat) {
+			model.cats.push(cat);
+			catListView.render();
+			formView.render();
 		}
 	}
 
@@ -82,6 +89,10 @@ document.addEventListener('DOMContentLoaded', (function() {
 		},
 
 		render: function() {
+			// Clear the cats list before rendering.
+			this.catsList.innerHTML = '';
+
+			// Create the elements to store cat's link.
 			let catLink, catName;
 
 			octopus.getCats().forEach(function(cat) {
@@ -128,6 +139,83 @@ document.addEventListener('DOMContentLoaded', (function() {
 			this.catCounter.innerHTML = ' ' + cat.counter;
 			this.catImg.src = cat.src;
 			this.catName.appendChild(this.catCounter);
+		}
+	}
+
+	/* Create the form view to render the cat form */
+	const formView = {
+		init: function() {
+			// Select the Admin button to show the cat form.
+			this.adminBtn = document.querySelector('#admin');
+
+			// Select the DOM elements for the cat form.
+			this.catForm = document.querySelector('.cat-form');
+			this.catName = document.querySelector('#cat-form-name');
+			this.catSrc  = document.querySelector('#cat-form-src');
+			this.catCounter = document.querySelector('#cat-form-counter');
+			this.cancelForm = document.querySelector('#form-cancel');
+			this.saveForm = document.querySelector('#form-save');
+
+			this.render();
+			// Add buttons event listeners.
+			this.admin();
+			this.cancel();
+			this.save();
+		},
+
+		admin: function() {
+			// Add a listener to adminBtn to display or hide the form.
+			this.adminBtn.addEventListener('click', (function(form) {
+				return function() {
+					// Get catForm classes to check if it is hidden.
+					let formClasses = form.catForm.classList,
+						hasClass = false;
+
+					formClasses.forEach(function(cl) {
+						if (cl === 'show' && !hasClass)
+							hasClass = true;
+					});
+
+					// Show the form or hide it.
+					hasClass ? formClasses.remove('show') : formClasses.add('show');
+				}
+			})(this));
+		},
+
+		cancel: function() {
+			// Clear the form and hide it.
+			this.cancelForm.addEventListener('click', (function(form) {
+				return function() {
+					form.render();
+				}
+			})(this));
+		},
+
+		save: function() {
+			// Save the current form into a new cat and clear/hide the form.
+			this.saveForm.addEventListener('click', (function(form) {
+				return function() {
+					// Create an empty cat obj.
+					let cat = {};
+
+					cat.name = form.catName.value;
+					cat.src = form.catSrc.value;
+					cat.counter = form.catCounter.value;
+
+					// Add the cat to the model.
+					octopus.addCat(cat);
+				}
+			})(this));
+		},
+
+		render: function() {
+			// Clear the form.
+			this.catName.value = '';
+			this.catSrc.value = '';
+			this.catCounter.value = '';
+
+			// Hide the form.
+			this.catForm.classList.remove('show');
 		}
 	}
 

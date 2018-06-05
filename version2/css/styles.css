@@ -13,7 +13,7 @@ body {
 /* Main container styles */
 .container {
 	display: flex;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 	align-content: center;
 	height: 100%;
 }
@@ -21,7 +21,7 @@ body {
 /* Cats list styles */
 .cats-list {
 	list-style: none;
-	width: 25%;
+	width: 20%;
 	align-self: center;
 }
 
@@ -42,7 +42,7 @@ body {
 
 /* Cat's display area styles */
 .cat-display {
-	width: 75%;
+	width: 65%;
 	align-self: center;
 }
 
@@ -55,4 +55,44 @@ body {
 	border: 1px solid black;
 	border-radius: 12px;
 	box-shadow: 3px 5px 10px 3px grey;
+}
+
+.admin {
+	min-width: 20%;
+	padding: 3px 0;
+	align-self: center;
+	margin-left: 40px;
+	border-radius: 12px;
+}
+
+.cat-form {
+	align-self: center;
+	margin: 10px auto;
+	padding: 0 20px;
+	border: 1px solid black;
+	box-shadow: 3px 5px 10px 3px grey;
+
+	transform: translate(-9999px, 0);
+	display: none;
+}
+
+.cat-form.show {
+	transform: translate(0, 0);
+	display: initial;
+}
+
+.cat-form-item {
+	display: table;
+	padding: 5px 0;
+}
+
+.form-button {
+	font-size: 16px;
+	margin: 10px;
+	text-decoration: none;
+	color: #33f;
+	border-radius: 6px;
+	border: 1px solid black;
+	padding: 5px;
+	box-shadow: 2px 4px 5px 0.5px grey;
 }
